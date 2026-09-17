@@ -12,8 +12,8 @@ async function add(req, res) {
         }
 
         if (!Number.isInteger(product.id) || typeof product.name !== 'string' || product.name.length > 50 
-            || typeof product.description !== 'string' || product.description.length > 255 || typeof product.price !== 'number' ||
-            !Number.isInteger(product.units) || product.units < 0) {
+                || typeof product.description !== 'string' || product.description.length > 255 || typeof product.price !== 'number' ||
+                product.price < 0 || !Number.isInteger(product.units) || product.units < 0) {
             return res.status(400).json({ error: 'Invalid product data' });
         }
 

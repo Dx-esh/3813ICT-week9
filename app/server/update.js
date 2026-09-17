@@ -21,12 +21,12 @@ async function update(req, res) {
         }
 
         if (!Number.isInteger(updatedProduct.id) || typeof updatedProduct.name !== 'string' || updatedProduct.name.length > 50 
-            || typeof updatedProduct.description !== 'string' || updatedProduct.description.length > 255 || typeof updatedProduct.price !== 'number' ||
-            !Number.isInteger(updatedProduct.units) || updatedProduct.units < 0) {
+                || typeof updatedProduct.description !== 'string' || updatedProduct.description.length > 255 || typeof updatedProduct.price !== 'number' ||
+                updatedProduct.price < 0 || !Number.isInteger(updatedProduct.units) || updatedProduct.units < 0) {
             return res.status(400).json({ error: 'Invalid product data' });
         }
 
-        if (Math.round(product.price * 100) !== product.price * 100) {
+        if (Math.round(updatedProduct.price * 100) !== updatedProduct.price * 100) {
             return res.status(400).json({ error: 'Price must have at most 2 decimal places' });
         }
 

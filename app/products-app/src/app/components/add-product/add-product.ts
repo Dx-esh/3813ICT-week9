@@ -44,6 +44,10 @@ export class AddProductComponent {
         if (err.status === 409) {
           alert('A product with this ID already exists.');
         }
+
+        if (err.status === 400) {
+          alert('Invalid product data.');
+        }
       }
     });
   }

@@ -61,6 +61,14 @@ export class UpdateProductComponent implements OnInit {
 
       error: (err) => {
         console.error('Error updating products:', err);
+        
+        if (err.status === 409) {
+          alert('A product with this ID already exists.');
+        }
+
+        if (err.status === 400) {
+          alert('Invalid product data.');
+        }
       }
     });
   }
