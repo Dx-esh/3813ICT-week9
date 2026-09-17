@@ -20,6 +20,16 @@ async function update(req, res) {
             return res.status(409).json({ error: 'A different product with this id already exists' });
         }
 
+        if (!Number.isInteger(updatedProduct.id) || typeof updatedProduct.name !== 'string' || updatedProduct.name.length > 50 
+            || typeof updatedProduct.description !== 'string' || updatedProduct.description.length > 255 || typeof updatedProduct.price !== 'number' ||
+            !Number.isInteger(updatedProduct.units) || updatedProduct.units < 0) {
+            return res.status(400).json({ error: 'Invalid product data' });
+        }
+
+        if (Math.round(product.price * 100) !== product.price * 100) {
+            return res.status(400).json({ error: 'Price must have at most 2 decimal places' });
+        }
+
         delete updatedProduct._id;
 
         const result = await products.updateOne(
