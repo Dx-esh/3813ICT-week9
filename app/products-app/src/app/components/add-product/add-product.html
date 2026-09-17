@@ -1,0 +1,66 @@
+<h1>Add Product</h1>
+
+<button
+    mat-icon-button
+    (click)="returnToProducts()"
+    aria-label="Return to products">
+
+    <mat-icon>arrow_back</mat-icon>
+</button>
+
+<form (ngSubmit)="addProduct()">
+
+    <label>
+        ID:
+        <input type="number"
+        [(ngModel)]="product.id"
+        name="id"
+        required>
+    </label>
+
+    <label>
+        Name:
+        <input type="text"
+        [(ngModel)]="product.name"
+        name="name"
+        required>
+    </label>
+
+    <label>
+        Price:
+        <input type="number"
+        [(ngModel)]="product.price"
+        name="price"
+        step="0.01"
+        required>
+    </label>
+
+    <label>
+        Type:
+        <input type="text"
+        [(ngModel)]="product.type"
+        name="type"
+        required>
+    </label>
+
+    <label>
+        Description:
+        <input type="text"
+        [(ngModel)]="product.description"
+        name="description"
+        required>
+    </label>
+
+    <label>
+        Units:
+        <input type="number"
+        [(ngModel)]="product.units"
+        name="units"
+        required>
+    </label>
+
+    <button type="submit">
+        Add Product
+    </button>
+
+</form>

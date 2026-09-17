@@ -1,0 +1,68 @@
+<h1>Update Product</h1>
+
+<button
+    mat-icon-button
+    (click)="returnToProducts()"
+    aria-label="Return to products">
+
+    <mat-icon>arrow_back</mat-icon>
+</button>
+
+@if (product(); as p) {
+    <form (ngSubmit)="updateProduct()">
+
+        <label>
+            ID:
+            <input type="number"
+            [(ngModel)]="p.id"
+            name="id"
+            required>
+        </label>
+
+        <label>
+            Name:
+            <input type="text"
+            [(ngModel)]="p.name"
+            name="name"
+            required>
+        </label>
+
+        <label>
+            Price:
+            <input type="number"
+            [(ngModel)]="p.price"
+            name="price"
+            step="0.01"
+            required>
+        </label>
+
+        <label>
+            Type:
+            <input type="text"
+            [(ngModel)]="p.type"
+            name="type"
+            required>
+        </label>
+
+        <label>
+            Description:
+            <input type="text"
+            [(ngModel)]="p.description"
+            name="description"
+            required>
+        </label>
+
+        <label>
+            Units:
+            <input type="number"
+            [(ngModel)]="p.units"
+            name="units"
+            required>
+        </label>
+
+        <button type="submit">
+            Update Product
+        </button>
+
+    </form>
+}
